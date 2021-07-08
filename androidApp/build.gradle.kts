@@ -4,21 +4,22 @@ plugins {
 }
 
 dependencies {
+    val compose = "1.0.0-rc01"
     implementation(project(":sharedApp"))
-    implementation("com.google.android.material:material:1.3.0")
+    implementation("com.google.android.material:material:1.4.0")
     implementation("androidx.appcompat:appcompat:1.3.0")
 
-    implementation("androidx.compose.ui:ui:1.0.0-beta09")
-    implementation("androidx.compose.runtime:runtime:1.0.0-beta09")
-    implementation("androidx.compose.ui:ui-tooling:1.0.0-beta09")
-    implementation("androidx.compose.foundation:foundation:1.0.0-beta09")
-    implementation("androidx.compose.material:material:1.0.0-beta09")
-    implementation("androidx.compose.material:material-icons-core:1.0.0-beta09")
-    implementation("androidx.compose.material:material-icons-extended:1.0.0-beta09")
-    implementation("androidx.activity:activity-compose:1.3.0-beta02")
+    implementation("androidx.compose.ui:ui:$compose")
+    implementation("androidx.compose.runtime:runtime:$compose")
+    implementation("androidx.compose.ui:ui-tooling:$compose")
+    implementation("androidx.compose.foundation:foundation:$compose")
+    implementation("androidx.compose.material:material:$compose")
+    implementation("androidx.compose.material:material-icons-core:$compose")
+    implementation("androidx.compose.material:material-icons-extended:$compose")
+    implementation("androidx.activity:activity-compose:1.3.0-rc01")
     implementation("com.google.accompanist:accompanist-coil:0.12.0")
-    implementation("androidx.compose.runtime:runtime-livedata:1.0.0-beta09")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.0.0-beta09")
+    implementation("androidx.compose.runtime:runtime-livedata:$compose")
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4:$compose")
 }
 
 android {
@@ -52,7 +53,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerVersion = "1.4.32"
-        kotlinCompilerExtensionVersion = "1.0.0-beta07"
+        kotlinCompilerVersion = "1.5.10"
+        kotlinCompilerExtensionVersion = "1.0.0-rc01"
     }
 }

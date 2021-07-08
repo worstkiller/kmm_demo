@@ -7,6 +7,6 @@ import platform.Foundation.NSLog
  */
 actual class KmmDemoLogger actual constructor() {
     actual fun log(message: String) {
-        if (Platform.isDebugBinary) NSLog(SharedAppConstants.SHARED_APP_NAME, message)
+        if (Platform.isDebugBinary) NSLog(message, "")
     }
 }

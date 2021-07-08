@@ -22,7 +22,6 @@ class DoggoListRepositoryImpl {
         count: Int,
         completionHandler: (BaseResponse<List<DoggoResponseModel>>) -> Unit
     ) {
-        freeze()
         ScopeProvider.iosScope.launch {
             doggoRepository.getDoggoList(count).collect {
                 completionHandler(it)
