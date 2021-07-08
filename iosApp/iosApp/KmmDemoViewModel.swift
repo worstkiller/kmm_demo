@@ -21,7 +21,7 @@ class KmmDemoViewModel: ObservableObject {
         return DoggoListRepositoryImpl()
     }()
     
-    private func getDoggoList(){
+    func getDoggoList(){
         doggoListRepository.getDoggoList(count: 15){ data in
             
             DispatchQueue.main.async {
@@ -40,7 +40,7 @@ class KmmDemoViewModel: ObservableObject {
                     //process data received
                     self.apiStatus = data.status
                     self.doggoList = data.data as? [DoggoResponseModel] ?? []
-                
+                    
                 default:
                     self.apiStatus = data.status
                 }
@@ -48,6 +48,25 @@ class KmmDemoViewModel: ObservableObject {
             }
         }
         
+    }
+    
+}
+
+extension KmmDemoViewModel {
+    
+    static func getTestData()-> [DoggoResponseModel]{
+        let dogElement = DoggoResponseModel(
+            breed_group: "Italian",
+            image: DoggoImage(url: ""),
+            life_span: "12",
+            name: "Pitbull",
+            origin: "peru",
+            temperament: "angry",
+            country_code: "PE"
+        )
+        var doggoModel = [DoggoResponseModel]()
+        doggoModel.append(dogElement)
+        return doggoModel
     }
     
 }

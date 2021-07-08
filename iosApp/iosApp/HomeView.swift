@@ -8,6 +8,7 @@
 
 import SwiftUI
 import sharedApp
+import SDWebImageSwiftUI
 
 struct HomeView: View {
     
@@ -28,14 +29,14 @@ struct HomeView: View {
                 Text("\(error?.message ?? ""): \(error?.errorCode ?? 101)")
                 
             case is BaseViewState.SUCCESS:
-                List {
+                VStack(alignment: .center) {
                     ForEach(doggoResponseModels, id: \.self){ doggo in
                         
                         SingleDogView(doggoModel: doggo)
                         
                     }
-                }
- 
+                }.padding()
+                
             default:
                 ProgressView("")
                 
@@ -48,18 +49,8 @@ struct HomeView: View {
 
 // MARK: HomeView Preview
 struct HomeView_Previews: PreviewProvider {
-    static let dogElement = DoggoResponseModel(
-        breed_group: "hello",
-        image: DoggoImage(url: ""),
-        life_span: "12",
-        name: "Pitbull",
-        origin: "peru",
-        temperament: "angry",
-        country_code: "PE"
-    )
-    static let doggoModel = [DoggoResponseModel](_immutableCocoaArray: dogElement)
     static var previews: some View {
-        HomeView(baseViewState: .constant(nil), doggoResponseModels: .constant(doggoModel))
+        HomeView(baseViewState: .constant(BaseViewState.SUCCESS.init()), doggoResponseModels: .constant(KmmDemoViewModel.getTestData()))
     }
 }
 
@@ -72,17 +63,34 @@ struct SingleDogView : View {
         
         HStack {
             
-            WebImage(url: URL(string: productAdapterItem.image))
+            WebImage(url: URL(string: doggoModel.image.url))
                 .placeholder{
-                    Color.fromHex(Colors.PRIMARY_COLOR)
+                    Color.fromHex("#311b92")
                 }
                 .resizable()
-                .frame(width: 60, height: 60, alignment: .center)
+                .frame(width: 100, height: 120, alignment: .center)
                 .scaledToFill()
-                .clipShape(RoundedRectangle(cornerRadius: 6))
-                .shadow(radius: 2)
+                .clipShape(RoundedRectangle(cornerRadius: 20)).padding(.all, 12)
             
-        }.background(RoundedRectangle(cornerRadius: 20).foregroundColor(.white).shadow(radius: 4))
+            Spacer().frame(width: 8)
+            
+            VStack(alignment: .leading) {
+                
+                Text(doggoModel.name).font(.title3).fontWeight(.semibold).foregroundColor(.gray)
+                
+                Text("Breed:  \(doggoModel.breed_group ?? "NA")").foregroundColor(Color.gray.opacity(0.6))
+                
+                Text("Life span:  \(doggoModel.life_span)").foregroundColor(Color.gray.opacity(0.6))
+                
+                Text("Origin:  \(doggoModel.origin ?? "NA")").foregroundColor(Color.gray.opacity(0.6))
+                
+                Spacer()
+                
+            }.frame(height: 120)
+            
+            Spacer()
+            
+        }.background(RoundedRectangle(cornerRadius: 20).foregroundColor(.white).shadow(radius: 4)).padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
         
     }
 }

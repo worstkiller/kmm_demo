@@ -12,13 +12,17 @@ struct ContentView: View {
             
             case .splash:
                 SplashView(kmmViewModel: kmmViewModel)
-          
+                
             case .home:
-                HomeView(kmmViewModel: kmmViewModel)
-            
+                HomeView(baseViewState: $kmmViewModel.apiStatus, doggoResponseModels: $kmmViewModel.doggoList)
+                
             default:
                 SplashView(kmmViewModel: kmmViewModel)
             }
+        }.onAppear{
+            
+            self.kmmViewModel.getDoggoList()
+            
         }
         
     }
