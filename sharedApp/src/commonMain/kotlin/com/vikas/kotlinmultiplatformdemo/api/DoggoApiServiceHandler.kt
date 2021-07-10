@@ -13,7 +13,7 @@ class DoggoApiServiceHandler(private val kmmDemoDoggoClient: KmmDemoClient) : Do
     companion object {
 
         fun getDoggoApiServiceHandler(): DoggoApiServiceHandler {
-            return DoggoApiServiceHandler(KmmDemoClient(NetworkConfig.DOGGO_ENDPOINT))
+            return DoggoApiServiceHandler(KmmDemoClient)
         }
 
     }

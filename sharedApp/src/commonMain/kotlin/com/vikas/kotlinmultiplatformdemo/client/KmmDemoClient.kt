@@ -9,6 +9,7 @@ import io.ktor.client.features.logging.*
 import io.ktor.client.request.*
 import io.ktor.http.*
 import kotlinx.serialization.json.Json
+import kotlin.native.concurrent.ThreadLocal
 
 
 /**
@@ -16,7 +17,10 @@ import kotlinx.serialization.json.Json
  * pass different host and should work for the new host.
  * make sure to change in the service level implementation
  */
-class KmmDemoClient(private val kmmHost: String = NetworkConfig.ENDPOINT) {
+@ThreadLocal
+object KmmDemoClient {
+
+    private const val kmmHost: String = NetworkConfig.DOGGO_ENDPOINT
 
     private val kmmDemoLogger: KmmDemoLogger by lazy {
         KmmDemoLogger()

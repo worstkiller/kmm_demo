@@ -26,7 +26,7 @@ class DoggoListRepository(private val doggoApiServiceHandler: DoggoApiServiceHan
 
     fun getDoggoList(count: Int): Flow<BaseResponse<List<DoggoResponseModel>>> {
         return flow<BaseResponse<List<DoggoResponseModel>>> {
-            //do repository level operation before consuming the data in the viewmodel or ui
+            //do repository level operation before consuming the data in the viewmodel
             val doggoList = doggoApiServiceHandler.getDoggoList(count = count)
             if (doggoList.isNullOrEmpty()) {
                 emit(BaseResponse.error(data = listOf(), msg = "No data found"))
@@ -35,7 +35,6 @@ class DoggoListRepository(private val doggoApiServiceHandler: DoggoApiServiceHan
             }
         }.catch { ex ->
             emit(DoggoApiErrorHandler.processError(ex))
-            KmmDemoLogger().log(ex.message ?: "")
         }.onStart { emit(BaseResponse(BaseViewState.LOADING)) }
     }
 
