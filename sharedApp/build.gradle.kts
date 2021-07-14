@@ -29,10 +29,8 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-core:$ktor")
-                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"){
-                    isForce = true
-                }
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.1")
+                implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.2")
                 implementation("io.ktor:ktor-client-serialization:$ktor")
                 implementation("io.ktor:ktor-client-logging:$ktor")
             }

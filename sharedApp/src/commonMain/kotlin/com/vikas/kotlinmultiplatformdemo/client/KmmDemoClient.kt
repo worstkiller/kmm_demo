@@ -27,14 +27,14 @@ object KmmDemoClient {
     }
 
     private val httpClient: HttpClient by lazy {
-        createHttpClient(createJson())
+        createHttpClient()
     }
 
     fun getClient() = httpClient
 
-    private fun createHttpClient(json: Json) = HttpClient {
+    private fun createHttpClient() = HttpClient {
         install(JsonFeature) {
-            serializer = KotlinxSerializer(json)
+            serializer = KotlinxSerializer(jsonInstance)
         }
 
         install(Logging) {
@@ -63,7 +63,7 @@ object KmmDemoClient {
         }
     }
 
-    private fun createJson() = Json {
+    private val jsonInstance = Json {
         isLenient = true
         ignoreUnknownKeys = true
         prettyPrint = true
