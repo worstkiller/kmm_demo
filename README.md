@@ -8,7 +8,7 @@ KMM gives us the flexibility in choosing your UI and you can start integrating K
 ## 📱Screenshots
 Android | iOS
 ------------ | -------------
-<img src="https://github.com/worstkiller/kmm_demo/blob/master/screenshots/Screenshot_20210716_014335_com.vikas.kotlinmultiplatformdemo.android.jpg" height="649" width="300">|<img src="https://github.com/worstkiller/kmm_demo/blob/master/screenshots/Simulator%20Screen%20Shot%20-%20iPhone%20SE%20(2nd%20generation)%20-%202021-07-16%20at%2001.43.16.png" height="649" width="350">
+<img src="https://github.com/worstkiller/kmm_demo/blob/master/screenshots/Screenshot_20210716_014335_com.vikas.kotlinmultiplatformdemo.android.jpg" height="649" width="300">|<img src="https://github.com/worstkiller/kmm_demo/blob/master/screenshots/Screenshot_ios_smple.png" height="649" width="350">
 
 ## 🖥️ Tech
 - [KMM](https://kotlinlang.org/docs/mobile/getting-started.html) - Kotlin Multiplatform Mobile 
