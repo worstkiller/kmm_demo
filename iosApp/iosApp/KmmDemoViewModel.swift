@@ -57,6 +57,14 @@ extension KmmDemoViewModel {
         )
         var doggoModel = [DoggoResponseModel]()
         doggoModel.append(dogElement)
+        doggoModel.append(dogElement)
+        doggoModel.append(dogElement)
+        doggoModel.append(dogElement)
+        doggoModel.append(dogElement)
+        doggoModel.append(dogElement)
+        doggoModel.append(dogElement)
+        doggoModel.append(dogElement)
+        doggoModel.append(dogElement)
         return doggoModel
     }
     

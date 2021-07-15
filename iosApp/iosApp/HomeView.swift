@@ -29,13 +29,13 @@ struct HomeView: View {
                 Text("\(error?.message ?? ""): \(error?.errorCode ?? 101)")
                 
             case is BaseViewState.SUCCESS:
-                VStack(alignment: .center) {
+                ScrollView {
                     ForEach(doggoResponseModels, id: \.self){ doggo in
                         
                         SingleDogView(doggoModel: doggo)
                         
                     }
-                }.padding()
+                }
                 
             default:
                 ProgressView("")
@@ -68,19 +68,19 @@ struct SingleDogView : View {
                     Color.fromHex("#311b92")
                 }
                 .resizable()
-                .frame(width: 100, height: 120, alignment: .center)
                 .scaledToFill()
+                .frame(width: 100, height: 120, alignment: .center)
                 .clipShape(RoundedRectangle(cornerRadius: 20)).padding(.all, 12)
             
             Spacer().frame(width: 8)
             
             VStack(alignment: .leading) {
                 
-                Text(doggoModel.name).font(.title3).fontWeight(.semibold).foregroundColor(.gray)
+                Text(doggoModel.name).font(.headline).fontWeight(.semibold).foregroundColor(.gray).padding(.bottom, 2)
                 
-                Text("Breed:  \(doggoModel.breed_group ?? "NA")").foregroundColor(Color.gray.opacity(0.6))
+                Text("Breed:  \(doggoModel.breed_group ?? "NA")").foregroundColor(Color.gray.opacity(0.6)).padding(.bottom, 2)
                 
-                Text("Life span:  \(doggoModel.life_span)").foregroundColor(Color.gray.opacity(0.6))
+                Text("Life span:  \(doggoModel.life_span)").foregroundColor(Color.gray.opacity(0.6)).padding(.bottom, 2)
                 
                 Text("Origin:  \(doggoModel.origin ?? "NA")").foregroundColor(Color.gray.opacity(0.6))
                 
@@ -90,7 +90,7 @@ struct SingleDogView : View {
             
             Spacer()
             
-        }.background(RoundedRectangle(cornerRadius: 20).foregroundColor(.white).shadow(radius: 4)).padding(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+        }.background(RoundedRectangle(cornerRadius: 20).foregroundColor(.white).shadow(radius: 4)).padding(EdgeInsets(top: 8, leading: 16, bottom: 8, trailing: 16))
         
     }
 }
